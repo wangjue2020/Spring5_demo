@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--1.配置User对象创建-->
+    <bean id="user" class="com.spring5.bean.User"></bean>
+
+    <!--2.用set方法进行注入-->
+    <bean id="book" class="com.spring5.bean.Book">
+        <!--
+        在bean标签内部声明<property name="..." value="..."/>标签
+        其中name属性对应class中这个field的名字
+        value属性表示要注入的值
+        就相当于
+        setBookName("Three Day Roads");
+        setAuthor("author of Three Day Road");
+        -->
+        <property name="bookName" value="Three Day Roads"/>
+        <property name="author" value="author of Three Day Road"/>
+    </bean>
+
+    <!--3、用有参构造器进行属性注入-->
+    <bean id="order" class="com.spring5.bean.Order">
+        <constructor-arg name="oderNum" value="qerwerqr1"/>
+        <constructor-arg name="company" value="FoodHWY"/>
+    </bean>
+</beans>

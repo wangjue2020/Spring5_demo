@@ -16,9 +16,31 @@
         setAuthor("author of Three Day Road");
         -->
         <property name="bookName" value="Three Day Roads"/>
-        <property name="author" value="author of Three Day Road"/>
+
+        <!--注入null值-->
+        <property name="address">
+            <null/>
+        </property>
+        <!--注入的属性值包含特殊符号
+            1、将<>进行转义， &lt; &gt;
+            2、用CDATA将内容识别为纯文本内容
+        -->
+        <property name="author">
+            <value>
+                <![CDATA[<<老舍》》]]>
+            </value>
+        </property>
     </bean>
 
+    <!--Service 和 dao对象的创建-->
+    <bean name="userdaoImpl" class="com.spring5.dao.impl.UserDAOImpl"/>
+    <bean name="userService" class="com.spring5.service.UserService">
+        <!--注入userDao对象
+            name属性：类里面属性的名称
+            ref属性：创造userDao对象bean标签id值
+        -->
+        <property name="userDAO" ref="userdaoImpl"/>
+    </bean>
     <!--3、用有参构造器进行属性注入-->
     <bean id="order" class="com.spring5.bean.Order">
         <constructor-arg name="oderNum" value="qerwerqr1"/>

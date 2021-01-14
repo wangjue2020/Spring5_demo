@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--注入集合属性值， 集合元素类型为基本数据类型和string
+    Array、 List、Set、Map
+    -->
+    <bean id="student1" class="com.spring.bean.Student">
+        <property name="classArray">
+            <array>
+                <value>Chinese</value>
+                <value>Math</value>
+                <value>English</value>
+                <value>Chinese</value>
+            </array>
+        </property>
+        <property name="classList">
+            <list>
+                <value>Chinese</value>
+                <value>Math</value>
+                <value>English</value>
+                <value>Chinese</value>
+            </list>
+        </property>
+        <property name="classMap">
+            <map>
+                <entry key="Chinese" value="1"/>
+                <entry key="Math" value="2"/>
+                <entry key="English" value="3"/>
+                <entry key="Chinese" value="4"/>
+            </map>
+        </property>
+        <property name="classSet">
+            <set>
+                <value>Chinese</value>
+                <value>Math</value>
+                <value>English</value>
+                <value>Chinese</value>
+            </set>
+        </property>
+    </bean>
+
+    <!--注入集合属性值， 集合元素类型为对象类型
+    Array、 List、Set、Map
+    -->
+    <bean name="student2" class="com.spring.bean.Student">
+        <property name="courseList">
+            <list>
+                <ref bean="course1"/>
+                <ref bean="course2" />
+            </list>
+        </property>
+    </bean>
+    <bean name="course1" class="com.spring.bean.Course">
+        <property name="courseName" value="CSC108"/>
+    </bean>
+    <bean name="course2" class="com.spring.bean.Course">
+        <property name="courseName" value="CSC148"/>
+    </bean>
+</beans>

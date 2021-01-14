@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <!--提取list集合类型属性注入-->
+    <util:list id="bookList">
+            <value>Harry Potter</value>
+            <value>Three Day Road</value>
+            <value>Hamlet</value>
+    </util:list>
+
+    <bean id="books" class="com.spring.bean.Books">
+        <property name="book" ref="bookList"/>
+    </bean>
+
+    <bean id="mybean" class="com.spring.bean.MyBean" scope="prototype"/>
+
+    <bean id="books1" class="com.spring.bean.Books" init-method="initMethod" destroy-method="destoryMethod">
+        <property name="book" ref="bookList"/>
+    </bean>
+
+    <bean id="beanpost" class="com.spring.bean.MyBeanPost"/>
+</beans>

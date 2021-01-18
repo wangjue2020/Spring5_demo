@@ -1,6 +1,7 @@
 package com.spring.test;
 
 import com.configuration.SpringConfig;
+import com.spring.bean.Book;
 import com.spring.bean.User;
 import com.spring.dao.impl.UserDaoImpl;
 import org.junit.Test;
@@ -16,5 +17,11 @@ public class TestAOP {
         User user = context.getBean("user", User.class);
         int res = user.add(1, 2);
         user.multi(1, 2);
+    }
+    @Test
+    public void testAopXML(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("bean1.xml");
+        Book book = context.getBean("book", Book.class);
+        book.buy();
     }
 }
